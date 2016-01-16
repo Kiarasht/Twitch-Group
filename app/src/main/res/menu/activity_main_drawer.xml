@@ -1,42 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="User">
+    <item android:title="@string/user_tool">
         <menu>
             <item
-                android:id="@+id/nav_camera"
+                android:id="@+id/nav_games"
                 android:icon="@drawable/ic_group_add"
-                android:title="Find Users" />
+                android:title="@string/find_games" />
             <item
-                android:id="@+id/nav_gallery"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Find Streamer" />
+                android:id="@+id/nav_group"
+                android:icon="@drawable/ic_group_add"
+                android:title="@string/find_group" />
+            <item
+                android:id="@+id/nav_stream"
+                android:icon="@drawable/ic_action_monitor"
+                android:title="@string/find_streamer" />
         </menu>
     </item>
 
-    <item android:title="Streamer">
+    <item android:title="@string/streamer_tool">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Start Commercial" />
+                android:id="@+id/nav_commercial"
+                android:icon="@drawable/ic_action_line_chart"
+                android:title="@string/start_commercial" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Viewers" />
+                android:id="@+id/nav_viewers"
+                android:icon="@drawable/ic_action_users"
+                android:title="@string/viewers" />
         </menu>
     </item>
 
-    <item android:title="Options">
+    <item android:title="@string/options">
         <menu>
             <item
                 android:id="@+id/settings"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Settings" />
+                android:icon="@drawable/ic_action_gear"
+                android:title="@string/settings" />
             <item
-                android:id="@+id/design_navigation_view"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Help" />
+                android:id="@+id/help"
+                android:icon="@drawable/ic_help"
+                android:title="@string/help" />
         </menu>
     </item>
 

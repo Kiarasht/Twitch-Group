@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -101,17 +100,22 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_games) {
+            Intent intent = new Intent(context, GameActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_group) {
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_stream) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_commercial) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_viewers) {
 
         } else if (id == R.id.settings) {
             Intent intent = new Intent(context, SettingsActivity.class);
             startActivity(intent);
+        } else if (id == R.id.help) {
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
