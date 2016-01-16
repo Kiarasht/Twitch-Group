@@ -103,8 +103,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_games) {
             Intent intent = new Intent(context, GameActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_group) {
-
+        } else if (id == R.id.nav_user) {
+            Intent intent = new Intent(context, SwipeDeck.class);
+            startActivity(intent);
         } else if (id == R.id.nav_stream) {
 
         } else if (id == R.id.nav_commercial) {

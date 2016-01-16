@@ -5,12 +5,12 @@
         <menu>
             <item
                 android:id="@+id/nav_games"
-                android:icon="@drawable/ic_group_add"
+                android:icon="@drawable/ic_action_joypad"
                 android:title="@string/find_games" />
             <item
-                android:id="@+id/nav_group"
+                android:id="@+id/nav_user"
                 android:icon="@drawable/ic_group_add"
-                android:title="@string/find_group" />
+                android:title="@string/find_user" />
             <item
                 android:id="@+id/nav_stream"
                 android:icon="@drawable/ic_action_monitor"

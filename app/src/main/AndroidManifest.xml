@@ -25,7 +25,9 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity android:name=".GameActivity"
-            android:label="@string/find_games" />/>
+            android:label="@string/find_games" />
+        <activity android:name=".SwipeDeck"
+            android:label="@string/find_games" />
     </application>
 
 </manifest>
