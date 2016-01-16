@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class SwipeDeckAdapter extends BaseAdapter {
+public class SwipeDeckAdapter extends BaseAdapter { 
 
     private List<String> data;
     private Context context;
