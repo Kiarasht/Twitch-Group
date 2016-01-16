@@ -1,10 +1,9 @@
 package com.restart.twitchgroup;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -13,7 +12,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -23,6 +21,10 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = ".MainActivity";
+    private ProgressDialog dialog;
+    private TextView confirmation;
+    private WebView webView;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +42,14 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        final ProgressDialog dialog = ProgressDialog.show(MainActivity.this, "",
-                "Loading. Please wait...", true);
+        dialog = ProgressDialog.show(MainActivity.this, "", "Loading. Please wait...", true);
 
-        final TextView textView = (TextView) findViewById(R.id.textView2);
-        textView.setVisibility(View.INVISIBLE);
+        confirmation = (TextView) findViewById(R.id.textView2);
+        confirmation.setVisibility(View.INVISIBLE);
 
-        final WebView webView = (WebView) findViewById(R.id.webView);
+        context = getApplicationContext();
+
+        webView = (WebView) findViewById(R.id.webView);
         webView.setVisibility(View.INVISIBLE);
         webView.setVisibility(View.INVISIBLE);
         webView.getSettings().setJavaScriptEnabled(true);
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity
                     webView.setVisibility(View.VISIBLE);
                 } else {
                     webView.setVisibility(View.GONE);
-                    textView.setVisibility(View.VISIBLE);
+                    confirmation.setVisibility(View.VISIBLE);
                 }
                 dialog.dismiss();
             }
@@ -91,28 +94,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -127,6 +108,9 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.settings) {
+            Intent intent = new Intent(context, SettingsActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
