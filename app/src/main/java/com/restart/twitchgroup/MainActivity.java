@@ -3,6 +3,7 @@ package com.restart.twitchgroup;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
@@ -22,7 +24,6 @@ public class MainActivity extends AppCompatActivity
 
     private static final String TAG = ".MainActivity";
     private ProgressDialog dialog;
-    private TextView confirmation;
     private WebView webView;
     private Context context;
 
@@ -44,9 +45,6 @@ public class MainActivity extends AppCompatActivity
 
         dialog = ProgressDialog.show(MainActivity.this, "", "Loading. Please wait...", true);
 
-        confirmation = (TextView) findViewById(R.id.textView2);
-        confirmation.setVisibility(View.INVISIBLE);
-
         context = getApplicationContext();
 
         webView = (WebView) findViewById(R.id.webView);
@@ -62,7 +60,10 @@ public class MainActivity extends AppCompatActivity
                     webView.setVisibility(View.VISIBLE);
                 } else {
                     webView.setVisibility(View.GONE);
-                    confirmation.setVisibility(View.VISIBLE);
+                    ImageView imageView2 = (ImageView) findViewById(R.id.imageView2);
+                    ImageView imageView3 = (ImageView) findViewById(R.id.imageView3);
+                    imageView2.setBackgroundColor(Color.RED);
+                    imageView3.setBackgroundColor(Color.BLACK);
                 }
                 dialog.dismiss();
             }
