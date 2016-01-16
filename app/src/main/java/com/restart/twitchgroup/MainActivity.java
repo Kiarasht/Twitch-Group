@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity
 
         webView = (WebView) findViewById(R.id.webView);
         webView.setVisibility(View.INVISIBLE);
-        webView.setVisibility(View.INVISIBLE);
         webView.getSettings().setJavaScriptEnabled(true);
 
         webView.setWebViewClient(new WebViewController() {

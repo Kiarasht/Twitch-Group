@@ -4,9 +4,10 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.squareup.picasso.Picasso;
 
@@ -18,33 +19,32 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class GameActivity extends AppCompatPreferenceActivity {
+public class GameActivity extends AppCompatActivity {
     private static final String TAG = ".GameActivity";
     private ProgressDialog dialog;
-    private String[] itemname;
+    private String[] url = new String[11];
+    private LinearLayout[] linearLayouts = new LinearLayout[11];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_layout);
         setupActionBar();
-
-        itemname = new String[]{"", "", "", "", "", "", "", "", "", ""};
         dialog = ProgressDialog.show(GameActivity.this, "", "Loading. Please wait...", true);
-        parsegames();
-
-        this.setListAdapter(new ArrayAdapter<>(
-                this, R.layout.list_layout,
-                R.id.Itemname, itemname));
+        linearLayouts[0] = (LinearLayout) findViewById(R.id.linear);
+        parsegames("https://api.twitch.tv/kraken/games/top", 0, "top", "game", "box", "large");
+        linearLayouts[0] = (LinearLayout) findViewById(R.id.linear);
+        parsegames("https://api.twitch.tv/kraken/games/top?limit=10&offset=10", 0, "top", "game", "box", "large");
+        linearLayouts[1] = (LinearLayout) findViewById(R.id.linear2);
+        parsegames("https://api.twitch.tv/kraken/streams/featured?limit=10", 1, "featured", "stream", "preview", "large");
     }
 
-    private void parsegames() {
+    private void parsegames(final String link, final int layoutarr, final String ... params) {
         AsyncTask.execute(new Runnable() {
             public void run() {
                 String strContent = "";
-
                 try {
-                    URL urlHandle = new URL("https://api.twitch.tv/kraken/games/top");
+                    URL urlHandle = new URL(link);
                     URLConnection urlconnectionHandle = urlHandle.openConnection();
                     InputStream inputstreamHandle = urlconnectionHandle.getInputStream();
 
@@ -74,31 +74,33 @@ public class GameActivity extends AppCompatPreferenceActivity {
                 }
 
                 try {
-                    JSONArray results = new JSONObject(strContent).getJSONArray("top");
+                    JSONArray results = new JSONObject(strContent).getJSONArray(params[0]);
 
                     for (int i = 0; i < results.length(); ++i) {
                         JSONObject result = results.getJSONObject(i);
-                        JSONObject gname = result.getJSONObject("game");
-                        itemname[i] = gname.getString("name");
-                        //Picasso.with(getApplicationContext()).load("http://i.imgur.com/DvpvklR.png").into(imageView);
+                        JSONObject box = result.getJSONObject(params[1]).getJSONObject(params[2]);
+                        url[i] = box.getString(params[3]);
                     }
+
 
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            dialog.dismiss();
+                            for (int i = 0; i < url.length; i++) {
+                                ImageView imageView = new ImageView(getApplicationContext());
+                                imageView.setId(i);
+                                imageView.setPadding(2, 2, 2, 2);
+                                Picasso.with(getApplicationContext()).load(url[i]).into(imageView);
+                                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                                linearLayouts[layoutarr].addView(imageView);
+                            }
                         }
-
                     });
-                } catch (
-                        JSONException e
-                        )
-
-                {
+                    dialog.dismiss();
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
-
         });
     }
 
