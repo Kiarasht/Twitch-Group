@@ -5,7 +5,7 @@ android:layout_height="match_parent"
 tools:context="{relativePackage}.${activityClass}" >
 
 <ListView
-    android:id="@+id/android:list"
+    android:id="@+id/android_list"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" />
 </RelativeLayout>
