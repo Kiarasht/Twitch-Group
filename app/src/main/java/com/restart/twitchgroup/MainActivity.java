@@ -182,6 +182,9 @@ public class MainActivity extends AppCompatActivity
                     alert.show();
                 }
             });
+        } else if (id == R.id.nav_social) {
+            Intent intent = new Intent(context, SocialMedia.class);
+            startActivity(intent);
         } else if (id == R.id.settings) {
             Intent intent = new Intent(context, SettingsActivity.class);
             startActivity(intent);

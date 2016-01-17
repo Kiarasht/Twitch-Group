@@ -10,43 +10,9 @@
     tools:showIn="@layout/app_bar_main">
 
     <WebView
+        android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/webView"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-
-    <Space
-        android:layout_width="8dp"
-        android:layout_height="20dp"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/space" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/space"
-        android:layout_alignBottom="@+id/space2" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView3"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/space2"
-        android:layout_alignParentTop="true"
-        android:layout_alignBottom="@+id/imageView2" />
-
-    <Space
-        android:layout_width="8dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/space"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="198dp"
-        android:id="@+id/space2" />
-
+        android:layout_centerVertical="true" />
 </RelativeLayout>

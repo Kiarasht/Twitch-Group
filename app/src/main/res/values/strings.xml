@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Twitch Group</string>
+    <string name="app_name">Twitch Grouper</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -77,4 +77,5 @@
     <string name="Help">Help</string>
     <string name="name">Kiarash Torkian</string>
     <string name="email">torkian@pdx.edu</string>
+    <string name="social_media">Social Media</string>
 </resources>

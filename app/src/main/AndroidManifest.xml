@@ -43,6 +43,26 @@
             android:configChanges="orientation"
             android:label="@string/Help"
             android:screenOrientation="portrait" />
-    </application>
 
+        <activity
+            android:name=".SocialMedia"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".First_Media"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Second_Media"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Third_Media"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Fourth_Media"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+    </application>
 </manifest>
