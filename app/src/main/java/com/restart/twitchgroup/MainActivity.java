@@ -175,8 +175,8 @@ public class MainActivity extends AppCompatActivity
                                     }
                                 }, 480000, 999999999999999999L);
                             } else {
-                                Toast.makeText(context, "Must wait 8 minutes before another request!"
-                                        , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Twitch asks for 8 minutes before doing another ad request!"
+                                        , Toast.LENGTH_LONG).show();
                             }
                             alert.dismiss();
                         }

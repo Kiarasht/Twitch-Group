@@ -52,12 +52,12 @@ public class SwipeDeck extends Activity {
                 //Do something on the left!
                 //You also have access to the original object.
                 //If you want to use it just cast it (String) dataObject
-                Toast.makeText(SwipeDeck.this, "Left!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SwipeDeck.this, "Pass!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRightCardExit(Object dataObject) {
-                Toast.makeText(SwipeDeck.this, "Right!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SwipeDeck.this, "Like!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
