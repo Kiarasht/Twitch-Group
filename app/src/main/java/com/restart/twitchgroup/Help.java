@@ -7,8 +7,6 @@ import android.webkit.WebViewClient;
 
 
 public class Help extends AppCompatActivity {
-    private static final String TAG = ".Help";
-    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +17,7 @@ public class Help extends AppCompatActivity {
 
         mWebView.loadUrl("file:///android_asset/help.html");
         mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.setVerticalScrollBarEnabled(false);
         mWebView.setWebViewClient(new MyWebViewClient());
     }
 

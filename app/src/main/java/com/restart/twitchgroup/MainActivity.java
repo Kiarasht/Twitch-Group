@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,7 +19,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -115,8 +113,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_user) {
             Intent intent = new Intent(context, SwipeDeck.class);
             startActivity(intent);
-        } else if (id == R.id.nav_stream) {
-
         } else if (id == R.id.nav_commercial) {
             runOnUiThread(new Runnable() {
                 @Override
@@ -186,8 +182,6 @@ public class MainActivity extends AppCompatActivity
                     alert.show();
                 }
             });
-        } else if (id == R.id.nav_viewers) {
-
         } else if (id == R.id.settings) {
             Intent intent = new Intent(context, SettingsActivity.class);
             startActivity(intent);

@@ -24,12 +24,14 @@ public class GameActivity extends AppCompatActivity {
     private ProgressDialog dialog;
     private String[] url = new String[40];
     private LinearLayout[] linearLayouts = new LinearLayout[11];
+    private int loop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_layout);
         setupActionBar();
+        loop = 0;
         dialog = ProgressDialog.show(GameActivity.this, "", "Loading. Please wait...", true);
         linearLayouts[0] = (LinearLayout) findViewById(R.id.linear);
         parsegames("https://api.twitch.tv/kraken/games/top", 0, false, "top", "game", "box", "large");
@@ -115,9 +117,13 @@ public class GameActivity extends AppCompatActivity {
                                 imageView.setScaleType(ImageView.ScaleType.FIT_XY);
                                 linearLayouts[layoutarr].addView(imageView);
                             }
+                            if (loop == 4) {
+                                dialog.dismiss();
+                            } else {
+                                ++loop;
+                            }
                         }
                     });
-                    dialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

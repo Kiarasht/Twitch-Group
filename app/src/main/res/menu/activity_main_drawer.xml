@@ -11,10 +11,6 @@
                 android:id="@+id/nav_user"
                 android:icon="@drawable/ic_group_add"
                 android:title="@string/find_user" />
-            <item
-                android:id="@+id/nav_stream"
-                android:icon="@drawable/ic_action_monitor"
-                android:title="@string/find_streamer" />
         </menu>
     </item>
 
@@ -24,10 +20,6 @@
                 android:id="@+id/nav_commercial"
                 android:icon="@drawable/ic_action_line_chart"
                 android:title="@string/start_commercial" />
-            <item
-                android:id="@+id/nav_viewers"
-                android:icon="@drawable/ic_action_users"
-                android:title="@string/viewers" />
         </menu>
     </item>
 
