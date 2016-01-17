@@ -45,23 +45,23 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".SocialMedia"
+            android:name=".media.SocialMedia"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".First_Media"
+            android:name=".media.First_Media"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Second_Media"
+            android:name=".media.Second_Media"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Third_Media"
+            android:name=".media.Third_Media"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Fourth_Media"
+            android:name=".media.Fourth_Media"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
     </application>

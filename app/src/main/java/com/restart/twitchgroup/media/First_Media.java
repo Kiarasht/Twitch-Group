@@ -1,4 +1,4 @@
-package com.restart.twitchgroup;
+package com.restart.twitchgroup.media;
 
 
 import android.app.Activity;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.restart.twitchgroup.R;
 
 
 public class First_Media extends Activity {

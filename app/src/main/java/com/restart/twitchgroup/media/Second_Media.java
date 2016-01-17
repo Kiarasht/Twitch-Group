@@ -1,4 +1,4 @@
-package com.restart.twitchgroup;
+package com.restart.twitchgroup.media;
 
 
 import android.app.Activity;
@@ -8,15 +8,17 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.restart.twitchgroup.R;
 
-public class Third_Media extends Activity {
+
+public class Second_Media extends Activity {
     private ProgressDialog dialog;
     private WebView webView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_layout);
-        dialog = ProgressDialog.show(Third_Media.this, "", "Loading. Please wait...", true);
+        dialog = ProgressDialog.show(Second_Media.this, "", "Loading. Please wait...", true);
         webView = (WebView) findViewById(R.id.webView3);
         webView.setVisibility(View.INVISIBLE);
         webView.getSettings().setJavaScriptEnabled(true);
@@ -29,7 +31,7 @@ public class Third_Media extends Activity {
             }
         });
 
-        webView.loadUrl("https://www.youtube.com/");
+        webView.loadUrl("https://www.twitter.com/");
     }
 
     public class WebViewController extends WebViewClient {

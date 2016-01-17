@@ -22,6 +22,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.restart.twitchgroup.media.SocialMedia;
+
 import java.util.Timer;
 import java.util.TimerTask;
 

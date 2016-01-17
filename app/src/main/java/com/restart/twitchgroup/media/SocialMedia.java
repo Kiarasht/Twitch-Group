@@ -1,11 +1,12 @@
-package com.restart.twitchgroup;
+package com.restart.twitchgroup.media;
 
 
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TabHost;
+
+import com.restart.twitchgroup.R;
 
 public class SocialMedia extends TabActivity {
 
