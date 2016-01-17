@@ -22,7 +22,7 @@ import java.net.URLConnection;
 public class GameActivity extends AppCompatActivity {
     private static final String TAG = ".GameActivity";
     private ProgressDialog dialog;
-    private String[] url = new String[11];
+    private String[] url = new String[40];
     private LinearLayout[] linearLayouts = new LinearLayout[11];
 
     @Override
@@ -32,14 +32,18 @@ public class GameActivity extends AppCompatActivity {
         setupActionBar();
         dialog = ProgressDialog.show(GameActivity.this, "", "Loading. Please wait...", true);
         linearLayouts[0] = (LinearLayout) findViewById(R.id.linear);
-        parsegames("https://api.twitch.tv/kraken/games/top", 0, "top", "game", "box", "large");
+        parsegames("https://api.twitch.tv/kraken/games/top", 0, false, "top", "game", "box", "large");
         linearLayouts[0] = (LinearLayout) findViewById(R.id.linear);
-        parsegames("https://api.twitch.tv/kraken/games/top?limit=10&offset=10", 0, "top", "game", "box", "large");
+        parsegames("https://api.twitch.tv/kraken/games/top?limit=8&offset=10", 0, true, "top", "game", "box", "large");
         linearLayouts[1] = (LinearLayout) findViewById(R.id.linear2);
-        parsegames("https://api.twitch.tv/kraken/streams/featured?limit=10", 1, "featured", "stream", "preview", "large");
+        parsegames("https://api.twitch.tv/kraken/streams/featured?limit=9", 1, false, "featured", "stream", "preview", "large");
+        linearLayouts[2] = (LinearLayout) findViewById(R.id.linear3);
+        parsegames("https://api.twitch.tv/kraken/videos/top?game=Gaming+Talk+Shows&period=month&limit=16", 2, false, "videos", "preview");
+        linearLayouts[3] = (LinearLayout) findViewById(R.id.linear4);
+        parsegames("https://api.twitch.tv/kraken/teams", 3, true, "teams", "logo");
     }
 
-    private void parsegames(final String link, final int layoutarr, final String ... params) {
+    private void parsegames(final String link, final int layoutarr, final Boolean second, final String ... params) {
         AsyncTask.execute(new Runnable() {
             public void run() {
                 String strContent = "";
@@ -74,19 +78,36 @@ public class GameActivity extends AppCompatActivity {
                 }
 
                 try {
-                    JSONArray results = new JSONObject(strContent).getJSONArray(params[0]);
+                    if (layoutarr != 2 && layoutarr != 3) {
+                        JSONArray results = new JSONObject(strContent).getJSONArray(params[0]);
+                        int length = results.length();
+                        if (layoutarr == 1 || second) {
+                            length = 8;
+                            url[8] = "";
+                            url[9] = "";
+                        }
+                        for (int i = 0; i < length; ++i) {
+                            JSONObject result = results.getJSONObject(i);
+                            JSONObject box = result.getJSONObject(params[1]).getJSONObject(params[2]);
+                            url[i] = box.getString(params[3]);
+                        }
+                    } else {
+                        JSONArray results = new JSONObject(strContent).getJSONArray(params[0]);
 
-                    for (int i = 0; i < results.length(); ++i) {
-                        JSONObject result = results.getJSONObject(i);
-                        JSONObject box = result.getJSONObject(params[1]).getJSONObject(params[2]);
-                        url[i] = box.getString(params[3]);
+                        for (int i = 0; i < results.length(); ++i) {
+                            JSONObject result = results.getJSONObject(i);
+                            url[i] = result.getString(params[1]);
+                        }
                     }
-
 
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            for (int i = 0; i < url.length; i++) {
+                            int length = url.length;
+                            if (layoutarr == 1 || second) {
+                                length = 8;
+                            }
+                            for (int i = 0; i < length; i++) {
                                 ImageView imageView = new ImageView(getApplicationContext());
                                 imageView.setId(i);
                                 imageView.setPadding(2, 2, 2, 2);
@@ -103,7 +124,6 @@ public class GameActivity extends AppCompatActivity {
             }
         });
     }
-
 
     /**
      * Set up the {@link android.app.ActionBar}, if the API is available.
